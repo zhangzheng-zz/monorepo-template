@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    // 内部模块路径
+    "baseUrl": "./packages",
+    "paths": {
+      "@zpz/*": ["*/src"]
+    }
+  },
+  "include": ["packages/*", "apps/*"],
+  "exclude": ["node_modules", "lib"]
+}

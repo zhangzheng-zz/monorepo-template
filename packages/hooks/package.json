@@ -1,0 +1,22 @@
+{
+  "name": "@zpz/hooks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.mjs",
+  "scripts": {
+    "build": "tsup",
+    "build:fix": "esno scripts/postbuild.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zpz/tsconfig": "workspace:^1.0.0"
+  },
+  "devDependencies": {
+    "vue": "^3.2.41"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.41"
+  }
+}

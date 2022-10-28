@@ -1,10 +1,12 @@
 {
-  "name": "tsconfig",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@zpz/tsconfig",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "files": [
-    "base.json",
-    "nextjs.json",
-    "react-library.json"
+    "base.json"
   ]
 }

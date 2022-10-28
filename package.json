@@ -7,19 +7,23 @@
     "packages/*"
   ],
   "scripts": {
+    "build:fix": "turbo run build: fix",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "eslint-config-custom": "workspace:*",
     "prettier": "latest",
-    "turbo": "latest"
+    "tsup": "^6.3.0",
+    "turbo": "latest",
+    "vue": "^3.2.41"
   },
   "engines": {
     "node": ">=14.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "fast-glob": "^3.2.12"
+  },
   "packageManager": "pnpm@7.13.6"
 }
