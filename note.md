@@ -224,6 +224,17 @@ pnpm i -Dw eslint lint-staged eslint-plugin-prettier @typescript-eslint/eslint-p
 
 格式化和 commit 自动化 https://juejin.cn/post/7136009620979449893#heading-1
 
+husky: 添加 git-hooks 提交拦截
+
+- pre-commit: lint-stage 做暂存区文件的校验
+  - prettier 代码格式化 为了防止和 eslint 冲突我们一般安装 eslint-config-prettier
+  - eslint 语法检查和 typescript 插件校验（不推荐 tslint？）
+  - stylelint 做 css 样式格式化
+- commit：
+  - commitizen 工具搭配 cz-conventional-changelog 适配器模块帮助生成符合 angular 规范的 commit 信息
+    （commitizen 初始化暂时不支持 pnpm，因为它通过 npm 和 yarn 安装 cz-conventional-changelog，可以手动操作，添加 path key 到 package config.commitizen ）
+  - commitlint 为 commit message 做校验，防止使用 git commit 提交不符合规范的信息
+
 重点参考：https://juejin.cn/post/7098609682519949325#heading-12
 
 https://juejin.cn/post/7053807488952434719#heading-1
