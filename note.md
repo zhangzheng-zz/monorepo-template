@@ -131,7 +131,7 @@ npm run build
 pnpm add @zpz/utils zpz/hooks --filter vue3-project
 ```
 
-配置全局 tsconfig，谁在包路径 paths:
+TODO: 解决模块内部跳转源码，配置全局 tsconfig，谁在包路径 paths:
 
 ```ts
 {
@@ -153,3 +153,83 @@ pnpm add @zpz/utils zpz/hooks --filter vue3-project
 ```
 pnpm run dev
 ```
+
+防止 yarn npm 安装：
+
+```
+"preinstall": "npx only-allow pnpm"
+```
+
+发布工作流
+
+pnpm publish
+
+```
+// before
+"dependencies": {
+  "@monorepo/package-a": "workspace:^1.0.0"
+}
+// after
+"dependencies": {
+  "@monorepo/package-a": "^1.0.0"
+}
+```
+
+changeset:
+https://pnpm.io/zh/using-changesets
+
+```
+pnpm add -Dw @changesets/cli
+
+pnpm changeset init
+```
+
+配置文件：
+
+changelog: changelog 生成方式
+commit: 不要让 changeset 在 publish 的时候帮我们做 git add
+linked: 配置哪些包要共享版本
+access: 公私有安全设定，内网建议 restricted ，开源使用 public
+baseBranch: 项目主分支
+updateInternalDependencies: 确保某包依赖的包发生 upgrade，该包也要发生 version upgrade 的衡量单位（量级）
+ignore: 不需要变动 version 的包
+\_\_\_experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH: 在每次 version 变动时一定无理由 patch 抬升依赖他的那些包的版本，防止陷入 major 优先的未更新问题
+
+代码提交规范：
+
+- 使用 cz-customizable 自定义提交信息
+- cz-conventional-changelog commitizen
+
+https://commitlint.js.org/#/reference-cli
+
+```
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  }
+```
+
+脚本参考：https://juejin.cn/post/7139502662080266247
+
+lint-stage 对暂存区的代码执行校验 防止垃圾代码溜进仓库 配合 husky 使用
+
+prettier eslint 格式化插件 eslint-plugin-prettier
+
+eslint-config-prettier - 关闭所有与 eslint 冲突的规则，请注意，该插件只有关闭冲突的规则的作用
+
+```
+pnpm i -Dw eslint lint-staged eslint-plugin-prettier @typescript-eslint/eslint-plugin typescript @typescript-eslint/parser eslint-config-prettier
+```
+
+格式化和 commit 自动化 https://juejin.cn/post/7136009620979449893#heading-1
+
+重点参考：https://juejin.cn/post/7098609682519949325#heading-12
+
+https://juejin.cn/post/7053807488952434719#heading-1
+
+https://maimai.cn/article/detail?fid=1748110352&efid=s8mFm7vRRBNphi0ccP3CBg
+
+主要包管理工具 pnpm（workplace） + turbo (https://turbo.build/) + changeset(发布和版本控制相关)
+
+turbo demo: https://github.com/vercel/turbo/tree/main/examples

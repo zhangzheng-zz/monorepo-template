@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-import useBoolean from "@zpz/hooks";
-import { Multiplication, Accumulation } from "@zpz/utils";
-const { setBool } = useBoolean();
-setBool(true);
+import { RouterLink, RouterView } from 'vue-router'
+import useBoolean from '@zpz/hooks'
+import { Multiplication, Accumulation } from '@zpz/utils'
+const { setBool } = useBoolean()
+setBool(true)
 
-console.log(Accumulation(1, 2, 3), 8);
-console.log(Multiplication(1, 2, 3));
+console.log(Accumulation(1, 2, 3), 8)
+console.log(Multiplication(1, 2, 3))
 </script>
 
 <template>

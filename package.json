@@ -7,16 +7,36 @@
     "packages/*"
   ],
   "scripts": {
+    "preinstall": "node ./scripts/preinstall.js",
+    "commit": "git add . && cz",
     "build:fix": "turbo run build: fix",
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
+    "build": "turbo run build --color",
+    "build:only": "turbo run build --only",
+    "dev": "turbo run dev --parallel --only",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "postinstall": "husky install",
+    "eslint": "eslint . --ext .ts,.vue,.js,.tsx"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.25.0",
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "commitizen": "^4.2.5",
+    "commitlint-config-cz": "^0.13.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^7.0.0",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "prettier": "latest",
     "tsup": "^6.3.0",
     "turbo": "latest",
+    "typescript": "~4.7.4",
     "vue": "^3.2.41"
   },
   "engines": {
@@ -25,5 +45,10 @@
   "dependencies": {
     "fast-glob": "^3.2.12"
   },
-  "packageManager": "pnpm@7.13.6"
+  "packageManager": "pnpm@7.13.6",
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  }
 }
